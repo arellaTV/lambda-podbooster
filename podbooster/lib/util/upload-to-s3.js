@@ -8,7 +8,8 @@ module.exports = (body, filename) => {
         let params = {
             Body: body,
             Bucket: process.env.S3_BUCKET,
-            Key: process.env.S3_PREFIX + filename,
+            ContentDisposition: 'inline',
+            Key: process.env.S3_PREFIX + decodeURI(filename),
         }
 
         if (body.pipe) {
